@@ -1,7 +1,7 @@
 # Bangla OS (বাঙলা OS)
 
 **Codename:** Padma (পদ্মা)  
-**Version:** 1.0.1 (branding refresh; live ISO still reports 1.0 until next rebuild)  
+**Version:** 1.0.1 (Padma)  
 **Base:** Debian 12 (Bookworm)  
 **Desktop:** XFCE  
 **Build Tool:** [Penguins-eggs](https://github.com/pieroproietti/penguins-eggs) (Phase 1)

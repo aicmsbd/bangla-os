@@ -1,0 +1,46 @@
+name: Bug report
+description: Report a problem with Bangla OS live or installed system
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      placeholder: Describe the bug clearly.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Bangla OS version
+      placeholder: "1.0.1"
+    validations:
+      required: true
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      options:
+        - Live ISO (QEMU)
+        - Live ISO (VirtualBox)
+        - Live ISO (real hardware)
+        - Installed system
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Boot patched ISO
+        2. ...
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / screenshots
+      description: Paste terminal output or attach screenshots.

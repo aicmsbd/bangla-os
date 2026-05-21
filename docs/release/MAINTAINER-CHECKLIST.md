@@ -11,16 +11,14 @@ Use after each ISO rebuild that ships to users.
 
 ## Artifacts
 
-- [ ] `output/bangla-os-1.0-amd64-patched.iso` (bootable)
-- [ ] `output/SHA256SUMS` and `docs/release/SHA256SUMS` match
-- [ ] `.\scripts\host\create-torrent.ps1`
-- [ ] `gh release upload v1.0.1 SHA256SUMS *.torrent --clobber`
+- [ ] `.\scripts\host\publish-release.ps1` — checksums + torrent + SF bundle + GitHub upload
+- [ ] Or manually: `create-torrent.ps1`, `prepare-sourceforge-upload.ps1`, `gh release upload`
 
 ## Mirrors & announce
 
-- [ ] `.\scripts\host\prepare-sourceforge-upload.ps1` — upload bundle to SourceForge
-- [ ] Update `docs/release/DOWNLOAD.md` with SourceForge URL
-- [ ] Post [ANNOUNCEMENT-DRAFTS.md](ANNOUNCEMENT-DRAFTS.md) (Reddit, Bengali groups)
+- [ ] Upload `output/sourceforge-upload/1.0.1/` to SourceForge
+- [ ] Post [REDDIT-POST.md](REDDIT-POST.md)
+- [ ] Post [BENGALI-POST.md](BENGALI-POST.md)
 - [ ] Submit [DISTROWATCH-SUBMIT.txt](DISTROWATCH-SUBMIT.txt)
 
 ## Live test (manual)

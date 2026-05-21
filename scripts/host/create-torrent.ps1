@@ -16,7 +16,7 @@ fi
 transmission-create -o '/mnt/c/Users/Z/Desktop/Bangla OS/output/bangla-os-1.0-amd64-patched.iso.torrent' \
   -t udp://tracker.opentrackr.org:1337/announce \
   -t udp://open.tracker.cl:1337/announce \
-  -c 'Bangla OS 1.0 (Padma) amd64 live ISO' \
+  -c 'Bangla OS 1.0.1 (Padma) amd64 live ISO' \
   '/mnt/c/Users/Z/Desktop/Bangla OS/output/bangla-os-1.0-amd64-patched.iso'
 "@
 
