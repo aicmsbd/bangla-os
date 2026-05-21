@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Bangla OS">
+  <rect width="512" height="512" rx="96" fill="#006a4e"/>
+  <circle cx="256" cy="200" r="72" fill="#f42a41"/>
+  <text x="256" y="360" text-anchor="middle" font-family="Segoe UI, Noto Sans Bengali, sans-serif" font-size="72" font-weight="700" fill="#ffffff">¬¾™²¾</text>
+  <text x="256" y="430" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="48" font-weight="600" fill="#e8f5e9">OS</text>
+</svg>

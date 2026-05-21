@@ -313,7 +313,8 @@ PHASE 1 — FIRST RELEASE (Penguins-eggs) / প্রথম রিলিজ
         → https://github.com/aicmsbd/bangla-os/releases/tag/v1.0.0
 [~] (A) Upload ISO to GitHub releases (or SourceForge if >2GB limit)
         [!] ISO 2304 MB exceeds GitHub 2GB limit; SHA256SUMS on release. Host ISO locally or use SourceForge.
-[ ] (A) Create torrent file (optional but recommended)
+[x] (A) Create torrent file (optional but recommended)
+        → output/bangla-os-1.0-amd64-patched.iso.torrent (on GitHub release)
 [ ] (B) Announce in Linux Bangladesh communities
 [ ] (B) Post on r/linux, r/debian
 [ ] (B) Submit to DistroWatch (free listing)
@@ -324,7 +325,8 @@ PHASE 2 — POLISH & ITERATION / পরিমার্জন
 
 ------ Phase 2.1: Custom Branding Assets ------
 
-[ ] (A) Design Bangla OS logo (SVG)
+[~] (A) Design Bangla OS logo (SVG)
+    - assets/branding/logo.svg (Bangladesh green + red circle + Bengali text)
     - Use Bangladesh flag green (#006a4e)
     - Bengali "বাঙলা OS" text
     - Square format, scalable
