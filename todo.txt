@@ -307,7 +307,7 @@ PHASE 1 — FIRST RELEASE (Penguins-eggs) / প্রথম রিলিজ
 ------ Phase 1.12: First Public Release ------
 
 [x] (A) Final ISO build with all fixes  (slim rebuild 2026-05-21, 2.3 GB)
-[x] (A) v1.0.1 boot-themes ISO  (2026-05-21_1202, Plymouth+GRUB+1.0.1 os-release)
+[x] (A) v1.0.1 neofetch config ISO  (2026-05-21 rebuild, full branding stack)
 [x] (A) Write release notes (Bengali + English)
         → docs/release/RELEASE-NOTES-1.0.md, RELEASE-NOTES-1.0.1.md, docs/release/SHA256SUMS
 [x] (A) Create GitHub release

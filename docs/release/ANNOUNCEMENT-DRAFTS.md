@@ -1,7 +1,7 @@
 # Bangla OS — Announcement drafts (Phase 1.12)
 
 **Latest ISO:** v1.0.1 boot-themes rebuild (`2026-05-21_1202`)  
-**Patched SHA256:** `b0cc3dd8296ac55f31a9d4451edfe5c915deaaeb087bd8201cb153d103e67014`
+**Patched SHA256:** `462841d68cdaaa38412c431d6f28bfe9991b2c52dc94e45f3bb2f0ad66b9dae8`
 
 ---
 

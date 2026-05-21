@@ -26,8 +26,8 @@ This is a **branding refresh** of Bangla OS 1.0. Same base packages and slim 2.3
 
 | File | SHA256 |
 |------|--------|
-| `bangla-os-1.0-amd64-patched.iso` | `b0cc3dd8296ac55f31a9d4451edfe5c915deaaeb087bd8201cb153d103e67014` |
-| `bangla-os-1.0-amd64.iso` | `b7a115bfaf30d520dbba474e616232ec9c1299dafa22e2ff4811c6ed0af660f5` |
+| `bangla-os-1.0-amd64-patched.iso` | `462841d68cdaaa38412c431d6f28bfe9991b2c52dc94e45f3bb2f0ad66b9dae8` |
+| `bangla-os-1.0-amd64.iso` | `2404599d914756d529e966460207835eb925c4a03f36a457e0176b2af32c6e32` |
 
 Full list: `SHA256SUMS` on this release.  
 **BitTorrent:** `bangla-os-1.0-amd64-patched.iso.torrent`
