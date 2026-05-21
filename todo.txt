@@ -325,23 +325,16 @@ PHASE 2 — POLISH & ITERATION / পরিমার্জন
 
 ------ Phase 2.1: Custom Branding Assets ------
 
-[~] (A) Design Bangla OS logo (SVG)
-    - assets/branding/logo.svg (Bangladesh green + red circle + Bengali text)
-    - Use Bangladesh flag green (#006a4e)
-    - Bengali "বাঙলা OS" text
-    - Square format, scalable
-        🧠 [E:GOOGLE] — Logo must work at 16px AND 512px. Test both.
-        🧠 [E:MS] — Logo must look professional, not amateur clipart.
-[ ] (A) Generate logo PNGs (16, 22, 24, 32, 48, 64, 128, 256, 512)
-[ ] (A) Design wallpaper set (5-10 wallpapers)
-    - Default: Padma river theme
-    - Optional: Sundarbans, mosques, cultural motifs
-    - Resolution: 1920x1080 minimum
-[ ] (A) Create Plymouth boot splash theme
-        🧠 [E:DEBIAN] — Follow Plymouth theme conventions. Don't hack.
-[ ] (A) Customize GRUB menu with logo and Bengali text
-[ ] (A) Customize LightDM greeter (background, branding)
+[x] (A) Design Bangla OS logo (SVG)
+    - assets/branding/logo.svg
+[x] (A) Generate logo PNGs (16, 22, 24, 32, 48, 64, 128, 256, 512)
+    - assets/branding/png/ + scripts/host/generate-logo-pngs.sh
+[~] (A) Design wallpaper set (5-10 wallpapers)
+    - assets/branding/wallpaper.jpg (default Padma theme)
 [ ] (B) Design Calamares installer branding
+    - scripts/build/07b-calamares-branding.sh (ready for next ISO rebuild)
+[ ] (A) Customize LightDM greeter (background, branding)
+    - wired in 07-branding.sh when wallpaper present
 [ ] (B) Create system sound theme (login, logout, notifications)
 
 ------ Phase 2.2: First-Run Welcome App ------

@@ -19,9 +19,9 @@ VERSION="1.0 (Padma)"
 VERSION_CODENAME=padma
 ID=bangla-os
 ID_LIKE=debian
-HOME_URL="https://github.com/bangla-os/bangla-os"
-SUPPORT_URL="https://github.com/bangla-os/bangla-os/issues"
-BUG_REPORT_URL="https://github.com/bangla-os/bangla-os/issues"
+HOME_URL="https://github.com/aicmsbd/bangla-os"
+SUPPORT_URL="https://github.com/aicmsbd/bangla-os/issues"
+BUG_REPORT_URL="https://github.com/aicmsbd/bangla-os/issues"
 LOGO=bangla-os
 EOF
 
@@ -40,6 +40,32 @@ if [[ -f "$WALLPAPER" ]]; then
     cp "$WALLPAPER" /usr/share/backgrounds/bangla-os/default.jpg
 fi
 
+# Logo PNGs and icons
+PNG_DIR="$PROJECT_ROOT/assets/branding/png"
+if [[ -d "$PNG_DIR" ]]; then
+    install -d /usr/share/icons/hicolor/{16x16,32x32,48x48,128x128,256x256,512x512}/apps
+    [[ -f "$PNG_DIR/bangla-os-16.png" ]] && cp "$PNG_DIR/bangla-os-16.png" /usr/share/icons/hicolor/16x16/apps/bangla-os.png
+    [[ -f "$PNG_DIR/bangla-os-32.png" ]] && cp "$PNG_DIR/bangla-os-32.png" /usr/share/icons/hicolor/32x32/apps/bangla-os.png
+    [[ -f "$PNG_DIR/bangla-os-48.png" ]] && cp "$PNG_DIR/bangla-os-48.png" /usr/share/icons/hicolor/48x48/apps/bangla-os.png
+    [[ -f "$PNG_DIR/bangla-os-128.png" ]] && cp "$PNG_DIR/bangla-os-128.png" /usr/share/icons/hicolor/128x128/apps/bangla-os.png
+    [[ -f "$PNG_DIR/bangla-os-256.png" ]] && cp "$PNG_DIR/bangla-os-256.png" /usr/share/icons/hicolor/256x256/apps/bangla-os.png
+    [[ -f "$PNG_DIR/bangla-os-512.png" ]] && cp "$PNG_DIR/bangla-os-512.png" /usr/share/icons/hicolor/512x512/apps/bangla-os.png
+    gtk-update-icon-cache /usr/share/icons/hicolor 2>/dev/null || true
+fi
+
+# LightDM greeter background
+if [[ -f /usr/share/backgrounds/bangla-os/default.jpg ]]; then
+    GREETER_CONF="/etc/lightdm/lightdm-gtk-greeter.conf"
+    if [[ -f "$GREETER_CONF" ]]; then
+        sed -i 's|^background=.*|background=/usr/share/backgrounds/bangla-os/default.jpg|' "$GREETER_CONF" 2>/dev/null || true
+        grep -q '^background=' "$GREETER_CONF" || echo "background=/usr/share/backgrounds/bangla-os/default.jpg" >> "$GREETER_CONF"
+    fi
+fi
+
 apt_install neofetch 2>/dev/null || true
+
+if [[ -f "$(dirname "$0")/07b-calamares-branding.sh" ]]; then
+    bash "$(dirname "$0")/07b-calamares-branding.sh"
+fi
 
 log "Branding applied."
