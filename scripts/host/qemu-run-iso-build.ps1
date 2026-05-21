@@ -22,7 +22,7 @@ if (-not $ready) { throw "Build VM SSH not ready. Start: scripts/host/start-qemu
 
 $tar = Join-Path $env:TEMP "bangla-os-scripts.tar"
 Push-Location $ProjectRoot
-tar -cf $tar scripts config 2>$null
+tar -cf $tar scripts config assets VERSION 2>$null
 Pop-Location
 Invoke-QemuSsh "mkdir -p /tmp/bangla-upload" | Out-Null
 & python $Py upload $tar "/tmp/bangla-os-scripts.tar"
@@ -30,9 +30,11 @@ Invoke-QemuSsh "mkdir -p /mnt/bangla-os" -Sudo | Out-Null
 Invoke-QemuSsh "tar -xf /tmp/bangla-os-scripts.tar -C /mnt/bangla-os" -Sudo | Out-Null
 
 if (-not $SkipIsoBuild) {
+    Write-Host "Applying branding (Phase 2.1)..."
+    Invoke-QemuSsh "bash /mnt/bangla-os/scripts/build/07-branding.sh" -Sudo | Out-Null
     Write-Host "Starting ISO rebuild (20-60 min)..."
     Invoke-QemuSsh "nohup bash /mnt/bangla-os/scripts/build/09-eggs-build.sh > /var/log/bangla-iso-rebuild.log 2>&1 & echo STARTED" -Sudo
-    Write-Host "Monitor: python scripts/host/qemu-ssh.py sudo tail -f /var/log/bangla-iso-rebuild.log"
+    Write-Host "Monitor: python scripts/host/qemu-ssh.py sudo tail -8 /var/log/bangla-iso-rebuild.log"
 }
 
 Write-Host "Build VM ready."
