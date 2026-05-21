@@ -85,4 +85,8 @@ if [[ -f "$(dirname "$0")/07c-boot-branding.sh" ]]; then
     bash "$(dirname "$0")/07c-boot-branding.sh"
 fi
 
+if [[ -f "$(dirname "$0")/07d-welcome-app.sh" ]]; then
+    bash "$(dirname "$0")/07d-welcome-app.sh"
+fi
+
 log "Branding applied."

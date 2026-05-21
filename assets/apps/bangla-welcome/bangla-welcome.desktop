@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Bangla OS Welcome
+Name[bn]=Bangla OS স্বাগতম
+Comment=First-run setup helper for Bangla OS
+Comment[bn]=Bangla OS প্রথম চালু সহায়ক
+Exec=bangla-welcome
+Icon=bangla-os
+Terminal=false
+Categories=System;Settings;
+StartupNotify=true

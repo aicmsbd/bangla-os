@@ -356,16 +356,12 @@ PHASE 2 — POLISH & ITERATION / পরিমার্জন
     Debian: follows XDG specs for autostart, desktop files
 
 [ ] (A) Design welcome wizard mockup
-[ ] (A) Create Python GTK3 app: bangla-welcome.py
-    Features:
-    - Bengali UI
-    - 4 main buttons (Network, Language, Software, Wine)
-    - "Don't show again" checkbox
-        🧠 [E:PROG] — Clean code. Separate UI from logic. Use GResource
-        for assets. Don't ship a 500-line spaghetti script.
-[ ] (A) Create autostart .desktop file
-[ ] (A) Add to /etc/skel/.config/autostart/
-[ ] (A) Test on fresh install
+[x] (A) Create Python GTK3 app: bangla-welcome.py
+    - assets/apps/bangla-welcome/bangla-welcome.py
+[x] (A) Create autostart .desktop file
+    - assets/apps/bangla-welcome/autostart.desktop + 07d-welcome-app.sh
+[x] (A) Add to /etc/skel/.config/autostart/
+[ ] (A) Test on fresh install (needs ISO rebuild)
 
 ------ Phase 2.3: Bangla Software Store ------
 
