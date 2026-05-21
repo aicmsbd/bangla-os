@@ -37,7 +37,18 @@ done
 
 echo "[patch-iso] Cloning ISO..."
 xorriso -indev "$ISO_IN" -outdev "$CLONE" -boot_image any replay "${MAP_ARGS[@]}" -commit
-mv -f "$CLONE" "$ISO_OUT"
+
+# WSL cannot always mv over Windows files (QEMU lock / permission); use host PowerShell
+if [[ "$ISO_OUT" == /mnt/c/* ]]; then
+    WIN_OUT="${ISO_OUT#/mnt/c/}"
+    WIN_OUT="C:/${WIN_OUT//\//\\}"
+    WIN_CLONE="${CLONE#/mnt/c/}"
+    WIN_CLONE="C:/${WIN_CLONE//\//\\}"
+    powershell.exe -NoProfile -Command "Move-Item -Force -LiteralPath '$WIN_CLONE' -Destination '$WIN_OUT'" 2>/dev/null \
+        || mv -f "$CLONE" "$ISO_OUT"
+else
+    mv -f "$CLONE" "$ISO_OUT"
+fi
 rm -rf "$WORK"
 
 echo "[patch-iso] Done: $ISO_OUT"

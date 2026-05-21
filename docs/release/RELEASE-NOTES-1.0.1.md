@@ -16,7 +16,9 @@ This is a **branding refresh** of Bangla OS 1.0. Same base packages and slim 2.3
 - Padma river default wallpaper (LightDM + `/usr/share/backgrounds/bangla-os/`)
 - Bangla OS logo icons (16–512 px)
 - Calamares installer branding (`bangla-os` theme)
-- Slim ISO retained (~2.3 GB vs 3.5 GB in early 1.0 builds)
+- **Plymouth + GRUB boot themes** (green Padma splash, live ISO menu)
+- **`os-release` reports 1.0.1**
+- Slim ISO retained (~2.3 GB)
 
 ### Download
 
@@ -24,8 +26,8 @@ This is a **branding refresh** of Bangla OS 1.0. Same base packages and slim 2.3
 
 | File | SHA256 |
 |------|--------|
-| `bangla-os-1.0-amd64-patched.iso` | `bc8283d81a4037db06e070d835c1a31e4a82178c44904cc15b077dc9432fc535` |
-| `bangla-os-1.0-amd64.iso` | `c9435bf71aa86bad6c1d6e5a499b25f2a50616d06490795c89972989fb6ac64c` |
+| `bangla-os-1.0-amd64-patched.iso` | `b0cc3dd8296ac55f31a9d4451edfe5c915deaaeb087bd8201cb153d103e67014` |
+| `bangla-os-1.0-amd64.iso` | `b7a115bfaf30d520dbba474e616232ec9c1299dafa22e2ff4811c6ed0af660f5` |
 
 Full list: `SHA256SUMS` on this release.  
 **BitTorrent:** `bangla-os-1.0-amd64-patched.iso.torrent`
@@ -46,7 +48,6 @@ QEMU recommended (8 GB RAM):
 
 - VirtualBox may hang at Plymouth; use QEMU
 - Headless serial boot fails (GUI patched ISO works)
-- `os-release` still reports `1.0` until next full version bump rebuild
 
 ---
 

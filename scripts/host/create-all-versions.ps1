@@ -82,6 +82,9 @@ function Download-RawIso {
 }
 
 function Patch-Isos {
+    # Stop GUI QEMU if it locks the patched ISO on Windows
+    Get-Process qemu-system-x86_64 -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+    Start-Sleep -Seconds 1
     Write-Host "[all-versions] Patching bootable ISO..."
     wsl bash $PatchSh `
         "/mnt/c/Users/Z/Desktop/Bangla OS/output/$Base.iso" `
