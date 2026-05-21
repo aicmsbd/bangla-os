@@ -1,0 +1,34 @@
+DistroWatch submission — Bangla OS 1.0.1 (Padma)
+Copy fields into: https://distrowatch.com/dwres.php?resource=submit
+
+---
+Name:           Bangla OS
+Version:        1.0.1
+Release date:   2026-05-21
+Architecture:   x86_64
+Category:       Desktop, Live Medium
+Desktop:        XFCE
+Based on:       Debian 12 (Bookworm)
+Origin:         Bangladesh
+Developer:      Bangla OS Project (aicmsbd)
+Website:        https://github.com/aicmsbd/bangla-os
+Download:       https://github.com/aicmsbd/bangla-os/releases/tag/v1.0.1
+                (BitTorrent + SHA256; direct ISO via SourceForge when mirrored)
+
+Description (English):
+Bangla OS is a Bengali-first Linux distribution based on Debian 12 Bookworm.
+It targets Bangladeshi users and Windows migrants with XFCE, OpenBangla Keyboard,
+Firefox ESR, Wine, and a Calamares graphical installer. Version 1.0.1 adds
+custom Padma branding: wallpaper, Plymouth/GRUB boot themes, and Calamares
+installer artwork. Live session login: live / evolution. ISO ~2.3 GB.
+
+Package management: apt (Debian)
+Installer:        Calamares
+Init:             systemd
+License:          GPL-3.0-or-later
+
+Contact email:    (your email)
+
+Notes:
+- ISO exceeds GitHub 2 GB limit; torrent on GitHub release
+- QEMU recommended for live testing; VirtualBox may hang at Plymouth

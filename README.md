@@ -28,6 +28,8 @@ Live login: **live** / **evolution**
 
 ISO files: `output/bangla-os-1.0-amd64-patched.iso` (bootable), checksums in `output/SHA256SUMS`.
 
+**SourceForge mirror:** `.\scripts\host\prepare-sourceforge-upload.ps1` — see [docs/release/DOWNLOAD.md](docs/release/DOWNLOAD.md).
+
 ### Build VM (QEMU)
 
 VirtualBox build VM may fail with `E_FAIL`; use QEMU instead:

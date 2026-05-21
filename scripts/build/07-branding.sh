@@ -64,6 +64,19 @@ fi
 
 apt_install neofetch 2>/dev/null || true
 
+# neofetch config for live + new users (Bangladesh green colors)
+NEOFETCH_SRC="$PROJECT_ROOT/assets/branding/neofetch/config.conf"
+if [[ -f "$NEOFETCH_SRC" ]]; then
+    install -d /etc/skel/.config/neofetch /usr/share/bangla-os
+    cp "$NEOFETCH_SRC" /etc/skel/.config/neofetch/config.conf
+    cp "$NEOFETCH_SRC" /usr/share/bangla-os/neofetch.conf
+    if [[ -d /home/live ]]; then
+        install -d /home/live/.config/neofetch
+        cp "$NEOFETCH_SRC" /home/live/.config/neofetch/config.conf
+        chown -R live:live /home/live/.config 2>/dev/null || true
+    fi
+fi
+
 if [[ -f "$(dirname "$0")/07b-calamares-branding.sh" ]]; then
     bash "$(dirname "$0")/07b-calamares-branding.sh"
 fi

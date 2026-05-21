@@ -26,7 +26,7 @@ Mark each item PASS / FAIL / SKIP and note bugs at the bottom.
 
 | # | Check | Result | Notes |
 |---|--------|--------|-------|
-| 5 | `neofetch` shows Bangla OS 1.0 (Padma) | | 1.0.1 string after next rebuild |
+| 5 | `neofetch` shows Bangla OS 1.0.1 (Padma) | | green color scheme |
 | 6 | Menu / about shows Bangla OS branding | | |
 
 ## Bengali & apps

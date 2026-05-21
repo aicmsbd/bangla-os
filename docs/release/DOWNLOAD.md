@@ -40,6 +40,12 @@ Get-FileHash .\bangla-os-1.0-amd64-patched.iso -Algorithm SHA256
 .\scripts\host\boot-qemu-test.ps1
 ```
 
-## SourceForge (planned)
+## SourceForge mirror
 
-Maintainers: upload patched ISO + SHA256SUMS to SourceForge and add mirror URL here.
+Run the upload helper (copies ISO + checksums to a bundle, opens SourceForge):
+
+```powershell
+.\scripts\host\prepare-sourceforge-upload.ps1
+```
+
+Guide: [SOURCEFORGE.md](SOURCEFORGE.md) — add mirror URL here after upload.
