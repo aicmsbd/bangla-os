@@ -307,17 +307,24 @@ PHASE 1 — FIRST RELEASE (Penguins-eggs) / প্রথম রিলিজ
 ------ Phase 1.12: First Public Release ------
 
 [x] (A) Final ISO build with all fixes  (slim rebuild 2026-05-21, 2.3 GB)
+[x] (A) v1.0.1 branding refresh ISO  (2026-05-21_1116, Phase 2.1 assets baked in)
 [x] (A) Write release notes (Bengali + English)
-        → docs/release/RELEASE-NOTES-1.0.md, docs/release/SHA256SUMS
+        → docs/release/RELEASE-NOTES-1.0.md, RELEASE-NOTES-1.0.1.md, docs/release/SHA256SUMS
 [x] (A) Create GitHub release
-        → https://github.com/aicmsbd/bangla-os/releases/tag/v1.0.0
+        → v1.0.0: https://github.com/aicmsbd/bangla-os/releases/tag/v1.0.0
+        → v1.0.1: https://github.com/aicmsbd/bangla-os/releases/tag/v1.0.1
 [~] (A) Upload ISO to GitHub releases (or SourceForge if >2GB limit)
         [!] ISO 2304 MB exceeds GitHub 2GB limit; SHA256SUMS on release. Host ISO locally or use SourceForge.
 [x] (A) Create torrent file (optional but recommended)
         → output/bangla-os-1.0-amd64-patched.iso.torrent (on GitHub release)
 [ ] (B) Announce in Linux Bangladesh communities
+        → drafts ready: docs/release/ANNOUNCEMENT-DRAFTS.md (v1.0.1)
 [ ] (B) Post on r/linux, r/debian
+        → drafts ready: docs/release/ANNOUNCEMENT-DRAFTS.md
 [ ] (B) Submit to DistroWatch (free listing)
+        → form fields in ANNOUNCEMENT-DRAFTS.md
+[ ] (B) SourceForge ISO mirror
+        → guide: docs/release/SOURCEFORGE.md
 
 ================================================================================
 PHASE 2 — POLISH & ITERATION / পরিমার্জন
@@ -330,11 +337,11 @@ PHASE 2 — POLISH & ITERATION / পরিমার্জন
 [x] (A) Generate logo PNGs (16, 22, 24, 32, 48, 64, 128, 256, 512)
     - assets/branding/png/ + scripts/host/generate-logo-pngs.sh
 [~] (A) Design wallpaper set (5-10 wallpapers)
-    - assets/branding/wallpaper.jpg (default Padma theme)
-[ ] (B) Design Calamares installer branding
-    - scripts/build/07b-calamares-branding.sh (ready for next ISO rebuild)
-[ ] (A) Customize LightDM greeter (background, branding)
-    - wired in 07-branding.sh when wallpaper present
+    - assets/branding/wallpaper.jpg (default Padma theme) — in ISO v1.0.1
+[x] (B) Design Calamares installer branding
+    - scripts/build/07b-calamares-branding.sh — in ISO v1.0.1
+[x] (A) Customize LightDM greeter (background, branding)
+    - wired in 07-branding.sh — in ISO v1.0.1
 [ ] (B) Create system sound theme (login, logout, notifications)
 
 ------ Phase 2.2: First-Run Welcome App ------

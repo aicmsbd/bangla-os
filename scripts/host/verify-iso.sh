@@ -27,6 +27,14 @@ done
 echo "[verify-iso] Squashfs listing (sample):"
 unsquashfs -ll "$WORK/fs.sqfs" 2>/dev/null | grep -E 'os-release|neofetch|firefox|wine|calamares|openbangla|lightdm' | head -30 || true
 
+echo "[verify-iso] Branding assets:"
+BRAND_SCRIPT="$(dirname "$0")/check-branding-in-iso.sh"
+if [[ -f "$BRAND_SCRIPT" ]]; then
+    bash "$BRAND_SCRIPT" "$ISO" 2>/dev/null | grep -E '^\[branding\]|squashfs-root' || true
+else
+    unsquashfs -ll "$WORK/fs.sqfs" 2>/dev/null | grep -E 'bangla-os|backgrounds/bangla' | head -8 || true
+fi
+
 ISO_MB=$(($(stat -c%s "$ISO") / 1024 / 1024))
 echo "[verify-iso] ISO size: ${ISO_MB} MB"
 echo "[verify-iso] Done."

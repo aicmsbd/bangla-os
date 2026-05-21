@@ -12,10 +12,10 @@ if [[ ! -f /etc/os-release.debian ]]; then
 fi
 
 cat > /etc/os-release << 'EOF'
-PRETTY_NAME="Bangla OS 1.0 (Padma)"
+PRETTY_NAME="Bangla OS 1.0.1 (Padma)"
 NAME="Bangla OS"
-VERSION_ID="1.0"
-VERSION="1.0 (Padma)"
+VERSION_ID="1.0.1"
+VERSION="1.0.1 (Padma)"
 VERSION_CODENAME=padma
 ID=bangla-os
 ID_LIKE=debian

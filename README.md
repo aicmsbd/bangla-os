@@ -1,7 +1,7 @@
 # Bangla OS (বাঙলা OS)
 
 **Codename:** Padma (পদ্মা)  
-**Version:** 1.0  
+**Version:** 1.0.1 (branding refresh; live ISO still reports 1.0 until next rebuild)  
 **Base:** Debian 12 (Bookworm)  
 **Desktop:** XFCE  
 **Build Tool:** [Penguins-eggs](https://github.com/pieroproietti/penguins-eggs) (Phase 1)
@@ -119,7 +119,9 @@ GPL-3.0-or-later — see [LICENSE](LICENSE).
 ## Links
 
 - **Repository:** https://github.com/aicmsbd/bangla-os
+- **Release v1.0.1:** https://github.com/aicmsbd/bangla-os/releases/tag/v1.0.1
 - **Release v1.0.0:** https://github.com/aicmsbd/bangla-os/releases/tag/v1.0.0
+- **Download guide:** [docs/release/DOWNLOAD.md](docs/release/DOWNLOAD.md)
 - [OpenBangla Keyboard](https://github.com/OpenBangla/OpenBangla-Keyboard)
 - [Penguins-eggs](https://github.com/pieroproietti/penguins-eggs)
 - [Debian 12 netinst](https://www.debian.org/CD/netinst/)

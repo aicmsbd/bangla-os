@@ -41,7 +41,7 @@ fi
 
 if [[ -f "$CONFIG" ]]; then
     sed -i 's/^basename:.*/basename: bangla-os/' "$CONFIG" 2>/dev/null || true
-    sed -i 's/^version:.*/version: "1.0"/' "$CONFIG" 2>/dev/null || true
+    sed -i 's/^version:.*/version: "1.0.1"/' "$CONFIG" 2>/dev/null || true
 fi
 
 bash "$SCRIPT_DIR/09c-slim-for-iso.sh"
