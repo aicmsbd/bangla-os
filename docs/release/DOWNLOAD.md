@@ -12,7 +12,7 @@
 ## Verify SHA256 (v1.0.1 patched ISO)
 
 ```
-462841d68cdaaa38412c431d6f28bfe9991b2c52dc94e45f3bb2f0ad66b9dae8  bangla-os-1.0-amd64-patched.iso
+4f0fd5795a39d0a9bfef59c1ee34cc07437cff6dc7fd9b0a40679e42137fb153  bangla-os-1.0-amd64-patched.iso
 ```
 
 Windows PowerShell:
