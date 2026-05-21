@@ -74,23 +74,11 @@ function Wait-IsoRebuild {
 }
 
 function Download-RawIso {
-    $remote = (Invoke-Ssh "ls -1t /home/eggs/egg-of_*.iso 2>/dev/null | while read f; do [ -f `"`$f`" ] && echo `"`$f`" && break; done" -Sudo).Trim()
-    $remote = ($remote -split "`n" | ForEach-Object { $_.Trim() } | Where-Object { $_ -match '^/' } | Select-Object -Last 1)
-    if (-not $remote) { throw "No ISO on build VM." }
-    Write-Host "[all-versions] Downloading $remote"
-    Invoke-Ssh "cp '$remote' /tmp/bangla-os.iso && chmod 644 /tmp/bangla-os.iso" -Sudo | Out-Null
     New-Item -ItemType Directory -Force -Path $OutDir | Out-Null
-    python -c @"
-import paramiko, os
-c = paramiko.SSHClient()
-c.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-c.connect('127.0.0.1', port=2222, username='banglaos', password='banglaos', timeout=30)
-sftp = c.open_sftp()
-sftp.get('/tmp/bangla-os.iso', r'$IsoRaw')
-sftp.close()
-c.close()
-print('Downloaded', os.path.getsize(r'$IsoRaw') // 1024 // 1024, 'MB')
-"@
+    $dl = Join-Path $ProjectRoot "scripts\host\qemu-download-iso.py"
+    & python $dl $IsoRaw
+    if (-not (Test-Path $IsoRaw)) { throw "ISO download failed: $IsoRaw" }
+    Write-Host "[all-versions] Downloaded $IsoRaw ($([math]::Round((Get-Item $IsoRaw).Length/1MB)) MB)"
 }
 
 function Patch-Isos {
