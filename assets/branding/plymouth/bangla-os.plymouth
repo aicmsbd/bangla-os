@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Bangla OS
+Description=Bangla OS Padma boot splash
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/bangla-os
+ScriptFile=/usr/share/plymouth/themes/bangla-os/bangla-os.script

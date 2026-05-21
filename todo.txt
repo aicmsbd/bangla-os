@@ -343,6 +343,10 @@ PHASE 2 — POLISH & ITERATION / পরিমার্জন
 [x] (A) Customize LightDM greeter (background, branding)
     - wired in 07-branding.sh — in ISO v1.0.1
 [ ] (B) Create system sound theme (login, logout, notifications)
+[x] (A) Configure GRUB customization
+    - assets/branding/grub/theme.txt + eggs livecd theme (08b-eggs-register.sh)
+[x] (A) Configure Plymouth theme inclusion
+    - assets/branding/plymouth/ + scripts/build/07c-boot-branding.sh
 
 ------ Phase 2.2: First-Run Welcome App ------
 
@@ -442,8 +446,10 @@ PHASE 3 — MIGRATION TO LIVE-BUILD / প্রোডাকশন গ্রে�
 [ ] (A) Migrate package lists to config/package-lists/
 [ ] (A) Convert customization scripts to chroot hooks
 [ ] (A) Move branding assets to config/includes.chroot/
-[ ] (A) Configure GRUB customization
-[ ] (A) Configure Plymouth theme inclusion
+[x] (A) Configure GRUB customization
+    - see Phase 2.1: assets/branding/grub/, eggs-theme/livecd/
+[x] (A) Configure Plymouth theme inclusion
+    - see Phase 2.1: assets/branding/plymouth/, 07c-boot-branding.sh
 [ ] (A) Configure Calamares branding
 
 ------ Phase 3.3: Build Automation ------

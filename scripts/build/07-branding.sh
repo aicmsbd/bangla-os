@@ -28,7 +28,7 @@ EOF
 hostnamectl set-hostname bangla-os 2>/dev/null || echo "bangla-os" > /etc/hostname
 
 cat > /etc/issue << 'EOF'
-Bangla OS 1.0 (Padma) — বাঙলা OS
+Bangla OS 1.0.1 (Padma) — বাঙলা OS
 Welcome / স্বাগতম
 
 EOF
@@ -66,6 +66,10 @@ apt_install neofetch 2>/dev/null || true
 
 if [[ -f "$(dirname "$0")/07b-calamares-branding.sh" ]]; then
     bash "$(dirname "$0")/07b-calamares-branding.sh"
+fi
+
+if [[ -f "$(dirname "$0")/07c-boot-branding.sh" ]]; then
+    bash "$(dirname "$0")/07c-boot-branding.sh"
 fi
 
 log "Branding applied."

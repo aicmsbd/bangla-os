@@ -30,8 +30,8 @@ componentName:  bangla-os
 strings:
     productName:         Bangla OS
     shortProductName:    Bangla OS
-    version:             1.0
-    shortVersion:        1.0
+    version:             1.0.1
+    shortVersion:        1.0.1
     bootloaderEntryName: Bangla OS
     productUrl:          https://github.com/aicmsbd/bangla-os
     supportUrl:          https://github.com/aicmsbd/bangla-os/issues
@@ -66,7 +66,7 @@ Presentation {
     }
     Slide { Image { source: "welcome.png"; anchors.fill: parent; fillMode: Image.PreserveAspectCrop } }
     Slide {
-        centeredText: qsTr("Bangla OS 1.0 (Padma)\nবাঙলা OS — Bengali-first Linux")
+        centeredText: qsTr("Bangla OS 1.0.1 (Padma)\nবাঙলা OS — Bengali-first Linux")
         Text { anchors.bottom: parent.bottom; anchors.horizontalCenter: parent.horizontalCenter
                text: qsTr("OpenBangla • XFCE • Wine • Calamares"); color: "#ffffff"; font.pixelSize: 18 }
     }

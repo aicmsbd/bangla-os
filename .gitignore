@@ -27,7 +27,10 @@ Thumbs.db
 *.swp
 *~
 
-# Secrets
+# Generated boot artwork (built by scripts/build/generate-boot-splash.sh)
+assets/branding/eggs-theme/livecd/splash.png
+assets/branding/grub/background.png
+
 .env
 *.key
 *.pem

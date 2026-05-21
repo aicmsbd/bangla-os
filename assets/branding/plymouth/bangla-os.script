@@ -1,0 +1,31 @@
+// Bangla OS Padma — minimal Plymouth script theme
+Window.SetBackgroundTopColor(0.0, 0.42, 0.31);
+Window.SetBackgroundBottomColor(0.0, 0.30, 0.22);
+
+logo.image = Image("logo.png");
+logo.sprite = Sprite(logo.image);
+
+fun refresh_callback() {
+    logo.sprite.SetPosition(
+        (Window.GetWidth() - logo.image.GetWidth()) / 2,
+        (Window.GetHeight() - logo.image.GetHeight()) / 2 - 40);
+}
+Plymouth.SetRefreshFunction(refresh_callback);
+
+fun message_callback(text, progress) {
+}
+Plymouth.SetMessageFunction(message_callback);
+
+fun display_normal_callback() {
+    logo.sprite.SetOpacity(1);
+}
+Plymouth.SetDisplayNormalFunction(display_normal_callback);
+
+fun display_password_callback(prompt, bullets) {
+}
+Plymouth.SetDisplayPasswordFunction(display_password_callback);
+
+fun quit_callback() {
+    logo.sprite.SetOpacity(0);
+}
+Plymouth.SetQuitFunction(quit_callback);

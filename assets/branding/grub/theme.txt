@@ -1,0 +1,48 @@
+# Bangla OS — GRUB theme (installed system + eggs live ISO)
+title-color: "#ffffff"
+title-text: "Bangla OS — Padma"
+title-font: "DejaVu Sans Regular 14"
+desktop-color: "0, 106, 78"
+desktop-image: "background.png"
+message-color: "#ffffff"
+message-bg-color: "0, 106, 78"
+terminal-font: "DejaVu Sans Mono Regular 12"
+
++ boot_menu {
+    top = 55%
+    left = 15%
+    width = 70%
+    height = 35%
+    item_font = "DejaVu Sans Regular 12"
+    item_color = "#ffffff"
+    selected_item_color = "#f42a41"
+    item_height = 24
+    item_padding = 8
+    item_spacing = 4
+}
+
++ label {
+    top = 8%
+    left = 0
+    width = 100%
+    height = 100
+    text = "Bangla OS — বাঙলা OS"
+    align = "center"
+    color = "#ffffff"
+    font = "DejaVu Sans Bold 16"
+}
+
++ progress_bar {
+    id = "__timeout__"
+    left = 15%
+    top = 100%-24
+    width = 70%
+    height = 18
+    bg_color = "0, 80, 58"
+    fg_color = "244, 42, 65"
+    border_color = "255, 255, 255"
+    show_text = true
+    font = "DejaVu Sans Regular 10"
+    text_color = "#ffffff"
+    text = "@TIMEOUT_NOTIFICATION_LONG@"
+}
