@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Bangla Store
+Name[bn]=বাঙলা স্টোর
+Comment=Install recommended software on Bangla OS
+Comment[bn]=Bangla OS-এ সফটওয়্যার ইনস্টল করুন
+Exec=bangla-store
+Icon=bangla-os
+Terminal=false
+Categories=System;PackageManager;
+StartupNotify=true

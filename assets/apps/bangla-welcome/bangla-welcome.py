@@ -138,7 +138,7 @@ class WelcomeWindow(Gtk.ApplicationWindow):
                 return
 
     def _open_software(self, _btn: Gtk.Button) -> None:
-        for cmd in (["xfce4-appfinder"], ["firefox-esr"], ["mousepad"]):
+        for cmd in (["bangla-store"], ["xfce4-appfinder"], ["firefox-esr"]):
             if shutil_which(cmd[0]):
                 run_command(cmd)
                 return

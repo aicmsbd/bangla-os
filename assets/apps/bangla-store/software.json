@@ -1,0 +1,65 @@
+{
+  "title_bn": "বাঙলা স্টোর",
+  "title_en": "Bangla Store",
+  "categories": [
+    {
+      "id": "internet",
+      "name_bn": "ইন্টারনেট",
+      "name_en": "Internet",
+      "apps": [
+        {"pkg": "firefox-esr", "name_bn": "Firefox", "name_en": "Firefox", "desc_bn": "ওয়েব ব্রাউজার", "desc_en": "Web browser"},
+        {"pkg": "thunderbird", "name_bn": "Thunderbird", "name_en": "Thunderbird", "desc_bn": "ইমেইল", "desc_en": "Email client"},
+        {"pkg": "transmission-gtk", "name_bn": "Transmission", "name_en": "Transmission", "desc_bn": "টরেন্ট", "desc_en": "BitTorrent client"}
+      ]
+    },
+    {
+      "id": "office",
+      "name_bn": "অফিস",
+      "name_en": "Office",
+      "apps": [
+        {"pkg": "libreoffice-writer", "name_bn": "LibreOffice Writer", "name_en": "LibreOffice Writer", "desc_bn": "ওয়ার্ড প্রসেসর", "desc_en": "Word processor"},
+        {"pkg": "libreoffice-calc", "name_bn": "LibreOffice Calc", "name_en": "LibreOffice Calc", "desc_bn": "স্প্রেডশিট", "desc_en": "Spreadsheet"},
+        {"pkg": "evince", "name_bn": "Evince", "name_en": "Evince", "desc_bn": "PDF রিডার", "desc_en": "PDF viewer"}
+      ]
+    },
+    {
+      "id": "media",
+      "name_bn": "মিডিয়া",
+      "name_en": "Media",
+      "apps": [
+        {"pkg": "vlc", "name_bn": "VLC", "name_en": "VLC", "desc_bn": "ভিডিও প্লেয়ার", "desc_en": "Video player"},
+        {"pkg": "gimp", "name_bn": "GIMP", "name_en": "GIMP", "desc_bn": "ইমেজ এডিটর", "desc_en": "Image editor"},
+        {"pkg": "audacious", "name_bn": "Audacious", "name_en": "Audacious", "desc_bn": "মিউজিক প্লেয়ার", "desc_en": "Music player"}
+      ]
+    },
+    {
+      "id": "education",
+      "name_bn": "শিক্ষা",
+      "name_en": "Education",
+      "apps": [
+        {"pkg": "stellarium", "name_bn": "Stellarium", "name_en": "Stellarium", "desc_bn": "খগোল বিজ্ঞান", "desc_en": "Planetarium"},
+        {"pkg": "geogebra", "name_bn": "GeoGebra", "name_en": "GeoGebra", "desc_bn": "গণিত", "desc_en": "Math software"},
+        {"pkg": "gcompris", "name_bn": "GCompris", "name_en": "GCompris", "desc_bn": "শিশু শিক্ষা", "desc_en": "Educational games"}
+      ]
+    },
+    {
+      "id": "games",
+      "name_bn": "গেম",
+      "name_en": "Games",
+      "apps": [
+        {"pkg": "supertuxkart", "name_bn": "SuperTuxKart", "name_en": "SuperTuxKart", "desc_bn": "রেসিং গেম", "desc_en": "Racing game"},
+        {"pkg": "0ad", "name_bn": "0 A.D.", "name_en": "0 A.D.", "desc_bn": "স্ট্র্যাটেজি", "desc_en": "Strategy game"},
+        {"pkg": "frozen-bubble", "name_bn": "Frozen Bubble", "name_en": "Frozen Bubble", "desc_bn": "আর্কেড", "desc_en": "Arcade puzzle"}
+      ]
+    },
+    {
+      "id": "windows",
+      "name_bn": "Windows সফটওয়্যার",
+      "name_en": "Windows apps (Wine)",
+      "apps": [
+        {"pkg": "wine", "name_bn": "Wine", "name_en": "Wine", "desc_bn": "Windows প্রোগ্রাম চালান", "desc_en": "Run Windows programs"},
+        {"pkg": "winetricks", "name_bn": "Winetricks", "name_en": "Winetricks", "desc_bn": "Wine সহায়ক", "desc_en": "Wine helper tools"}
+      ]
+    }
+  ]
+}

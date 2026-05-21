@@ -89,4 +89,8 @@ if [[ -f "$(dirname "$0")/07d-welcome-app.sh" ]]; then
     bash "$(dirname "$0")/07d-welcome-app.sh"
 fi
 
+if [[ -f "$(dirname "$0")/07e-bangla-store.sh" ]]; then
+    bash "$(dirname "$0")/07e-bangla-store.sh"
+fi
+
 log "Branding applied."
