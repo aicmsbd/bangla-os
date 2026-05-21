@@ -1,0 +1,33 @@
+# ISO images (large binaries)
+iso/*.iso
+iso/*.iso.sha256
+
+# VM disks and VirtualBox state
+vm/**/*.vdi
+vm/**/*.vbox
+vm/**/*.vbox-prev
+vm/**/Logs/
+vm/**/Snapshots/
+
+# OS build artifacts
+*.iso
+*.iso.sha256
+output/
+vm/**/*.png
+vm/**/*.log
+vm/**/*.qcow2
+vm/BanglaOS-Build/
+vm/boot-assets/
+vm/build-log.txt
+vm/rebuild-log.txt
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Secrets
+.env
+*.key
+*.pem

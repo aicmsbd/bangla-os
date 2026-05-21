@@ -1,0 +1,669 @@
+================================================================================
+                    BANGLA OS — PROJECT TODO LIST
+                    বাঙলা OS — সম্পূর্ণ কাজের তালিকা
+================================================================================
+
+Project: Bangla OS (বাঙলা OS)
+Codename: Padma (পদ্মা)
+Version: 1.0
+Base: Debian 12 (Bookworm)
+DE: XFCE
+Build Tool: Penguins-eggs (Phase 1) → Live-build (Phase 3)
+
+================================================================================
+ENGINEER MINDSET / ইঞ্জিনিয়ার মানসিকতা — READ FIRST
+================================================================================
+
+⚠️ CORE PRINCIPLE: Never approach this project as a regular worker or hobbyist.
+    Every task — especially complex ones — must be approached with the mindset
+    of a senior, high-grade engineer.
+
+🧠 ENGINEER PERSONAS TO ADOPT (depending on task):
+
+  [E:GOOGLE]  → Google Core Engineer
+                Think: scalability, performance, reliability, clean
+                architecture, automation-first, testing rigor, "would
+                this survive at scale?"
+
+  [E:MS]      → Microsoft OS Engineer
+                Think: end-user UX, compatibility, hardware support,
+                Windows-user familiarity, accessibility, polish,
+                "would a non-tech user understand this?"
+
+  [E:DEBIAN]  → Debian Core Engineer
+                Think: Debian Policy compliance, package quality,
+                stability, security updates, FHS hierarchy, init
+                systems, "is this the Debian Way?"
+
+  [E:PROG]    → Senior Programmer / Software Architect
+                Think: clean code, design patterns, modularity,
+                maintainability, documentation, version control
+                hygiene, "will future-me understand this code?"
+
+  [E:MIX-3]   → Mix of 3 engineer perspectives (cross-functional review)
+                For HIGH-ENERGY tasks: weigh decisions from Google +
+                Microsoft + Debian perspectives simultaneously.
+                Make the call that satisfies all three.
+
+  [E:ALL]     → All 4 perspectives — for CRITICAL architecture decisions
+                that affect the entire project's future.
+
+⚡ HIGH-ENERGY TASK RULE:
+    For any task marked [E:MIX-3] or [E:ALL]:
+    1. Stop. Do NOT execute immediately.
+    2. Mentally consult the relevant engineer personas.
+    3. Document the decision-making rationale.
+    4. Cross-check against project goals (lightweight, Bengali-first,
+       Windows-user friendly, runs on weak PCs).
+    5. Only then execute.
+
+🎯 ALWAYS REMEMBER:
+    - A Google engineer wouldn't ship spaghetti code
+    - A Microsoft engineer wouldn't ship broken UX
+    - A Debian engineer wouldn't ship policy violations
+    - A senior programmer wouldn't ship undocumented hacks
+    YOU MUST NOT EITHER.
+
+LEGEND:
+  [ ] = pending / অসম্পন্ন
+  [x] = done / সম্পন্ন
+  [~] = in progress / চলমান
+  [!] = blocker / সমস্যা
+  (A) = high priority / উচ্চ
+  (B) = medium priority / মধ্যম
+  (C) = low priority / নিম্ন
+  [E:XXX] = Engineer mindset required (see above)
+
+================================================================================
+PHASE 0 — PREPARATION / প্রস্তুতি
+================================================================================
+
+[x] (A) Host machine ready (8GB+ RAM, 100GB+ disk)
+[x] (A) VirtualBox or VMware installed
+[x] (A) Debian 12 netinst ISO downloaded
+    URL: https://www.debian.org/CD/netinst/
+[ ] (A) GitHub account ready
+[ ] (A) Create GitHub repo "bangla-os" (public)
+        🧠 [E:PROG] — Set up proper repo structure, branch protection,
+        issue templates, PR templates from day one. Don't be sloppy.
+[x] (B) Choose license — recommend GPL v3
+        🧠 [E:DEBIAN] — License must be DFSG-compatible. GPLv3 is safe.
+[x] (B) Create project folder structure locally
+        🧠 [E:PROG] — Think modularity. Folders should make sense to
+        someone joining the project on day 100.
+[x] (B) Initialize git repo with README.md
+[ ] (C) Reserve domain name (banglaos.org or .com)
+[ ] (C) Create social media handles (Telegram, Discord, Facebook)
+
+================================================================================
+PHASE 1 — FIRST RELEASE (Penguins-eggs) / প্রথম রিলিজ
+================================================================================
+
+------ Phase 1.1: VM & Debian Minimal Install ------
+
+[~] (A) Create VirtualBox VM "BanglaOS-Build"
+    - RAM: 4096 MB
+    - Disk: 40 GB dynamic
+    - Disable EFI/Secure Boot
+    - Network: NAT
+[~] (A) Boot Debian netinst ISO
+[~] (A) Install Debian with these settings:
+    - Hostname: bangla-os
+    - User: banglaos
+    - Software: ONLY "SSH server" + "standard system utilities"
+    - UNCHECK all desktop environments
+        🧠 [E:DEBIAN] — Minimal install is non-negotiable. Every
+        package added later must be justified. Bloat is the enemy.
+[ ] (A) First boot verification
+[ ] (A) Take VirtualBox snapshot: "01-base-debian"
+
+------ Phase 1.2: Base System Setup ------
+
+[ ] (A) Update system: apt update && apt upgrade
+[ ] (A) Install sudo and add user to sudo group
+[ ] (A) Install essentials: build-essential, git, vim, htop, curl, wget
+[ ] (A) Configure SSH for remote access (optional but useful)
+[ ] (A) Snapshot: "02-base-tools"
+
+------ Phase 1.3: XFCE Minimal Install ------
+
+[ ] (A) Install XFCE without recommends (avoid bloat):
+    sudo apt install --no-install-recommends xfce4 ...
+        🧠 [E:MIX-3] HIGH-ENERGY TASK
+        Google: which packages truly necessary? Profile RAM.
+        Microsoft: will it feel familiar to Windows users?
+        Debian: is --no-install-recommends the right call here?
+        DECISION: Yes, minimal + manually add what UX demands.
+[ ] (A) Install LightDM display manager
+[ ] (A) Install network-manager-gnome
+[ ] (A) Install audio stack (pulseaudio, pavucontrol)
+[ ] (A) Install bluetooth (bluez, blueman)
+[ ] (A) Install file-roller + archive tools (p7zip, unrar)
+[ ] (A) Install Noto fonts (default Unicode coverage)
+[ ] (A) Enable lightdm service
+[ ] (A) Reboot and verify GUI loads
+[ ] (A) Check RAM usage idle (target: <500MB)
+        🧠 [E:GOOGLE] — Measure, don't guess. If >500MB, profile and
+        cut. Performance is a feature.
+[ ] (A) Snapshot: "03-xfce-minimal"
+
+------ Phase 1.4: Bengali Language Support ------
+
+🧠 [E:MIX-3] ENTIRE PHASE IS HIGH-ENERGY
+    This is the project's CORE differentiator. Cannot afford mediocrity.
+    Google: Test rendering edge cases, kerning, ligatures.
+    Microsoft: Bengali UX must feel as polished as English.
+    Debian: Use Debian's i18n infrastructure properly, not hacks.
+
+[ ] (A) Install Bengali fonts: fonts-beng, fonts-beng-extra, fonts-lohit-beng
+[ ] (B) Manually add Kalpurush, SolaimanLipi fonts to /usr/share/fonts/
+[ ] (A) Generate locales: bn_BD.UTF-8 and en_US.UTF-8
+[ ] (A) Install ibus + ibus-m17n + ibus-gtk
+[ ] (A) Install OpenBangla Keyboard (.deb from GitHub releases)
+[ ] (A) Set ibus as default input method (im-config -n ibus)
+[ ] (A) Create ibus autostart entry in ~/.config/autostart/
+[ ] (A) Configure ibus-setup to add Bengali (OpenBangla)
+[ ] (A) Test Bengali typing in different apps
+        🧠 [E:MS] — Test in EVERY common app. Firefox, Thunar, Mousepad,
+        terminal, Wine apps. No exceptions. Users will find what you miss.
+[ ] (A) Test font fallback (mixed Bengali/English text)
+        🧠 [E:GOOGLE] — fontconfig priority must be correct. Test with
+        edge cases: numbers in Bengali text, English in Bengali, etc.
+[ ] (A) Snapshot: "04-bengali-support"
+
+------ Phase 1.5: Windows Software Support ------
+
+🧠 [E:MS] CRITICAL FOR USER MIGRATION
+    Microsoft engineer mindset: every common Windows workflow must work.
+    Test the apps Bangladeshi users actually use (not theoretical lists).
+
+[ ] (A) Enable i386 architecture (dpkg --add-architecture i386)
+[ ] (A) Install Wine (wine, wine64, wine32, winetricks)
+[ ] (A) Install cabextract and fonts-wine
+[ ] (A) Install PlayOnLinux
+[ ] (A) Install Flatpak + add Flathub
+[ ] (A) Install Bottles via Flatpak
+[ ] (A) Create .exe file association with Wine
+[ ] (A) Initialize Wine prefix (winecfg)
+[ ] (B) Test with a sample Windows app (Notepad++, IrfanView)
+        🧠 [E:MS] — Also test: Avro Keyboard for Windows, popular
+        Bangladeshi accounting/educational software. Document what
+        works and what doesn't honestly.
+[ ] (A) Snapshot: "05-wine-ready"
+
+------ Phase 1.6: Browser & Essential Apps ------
+
+[ ] (A) Install Firefox ESR + Bengali language pack
+[ ] (A) Install Mousepad (text editor)
+[ ] (A) Install Ristretto (image viewer)
+[ ] (A) Install VLC (media player)
+[ ] (A) Install media codecs (libavcodec-extra, ffmpeg, gstreamer plugins)
+        🧠 [E:DEBIAN] — Verify codec licensing. main vs contrib vs
+        non-free. Document the choice.
+[ ] (B) Set Firefox as default browser
+[ ] (B) Configure Firefox: Bengali UI, Bengali search engine option
+[ ] (A) Snapshot: "06-essential-apps"
+
+------ Phase 1.7: Windows-Style Look ------
+
+🧠 [E:MS] PHASE HIGH-ENERGY
+    This is the "feels like home" phase for Windows refugees.
+    UX details matter enormously. Pixel-level care required.
+
+[ ] (A) Install themes: arc-theme, papirus-icon-theme, breeze-cursor-theme
+[ ] (B) Optional: install Windows-10 GTK theme from GitHub
+[ ] (A) Set XFCE appearance: Arc-Dark theme
+[ ] (A) Set icons: Papirus-Dark
+[ ] (A) Set cursor: Breeze
+[ ] (A) Move XFCE panel to bottom
+[ ] (A) Set panel height: 36px, length: 100%
+[ ] (A) Configure Whisker Menu as Start button
+[ ] (A) Add panel items in order:
+       Whisker → Show Desktop → Window Buttons →
+       Notifications → Audio → Network → Clock
+[ ] (A) Configure keyboard shortcuts (Windows-like):
+       Super_L → Whisker Menu
+       Super+E → Thunar
+       Super+D → Show Desktop
+       Super+L → Lock screen
+       Print → Screenshot
+        🧠 [E:MS] — Match Windows muscle memory exactly. Don't be clever.
+[ ] (A) Set window manager theme to Arc-Dark
+[ ] (A) Snapshot: "07-windows-look"
+
+------ Phase 1.8: Branding (Bangla OS Identity) ------
+
+[ ] (A) Edit /etc/os-release with Bangla OS info
+        🧠 [E:DEBIAN] — Follow os-release(5) spec exactly. ID, ID_LIKE,
+        VERSION fields must be standard-compliant.
+[ ] (A) Backup original as /etc/os-release.debian
+[ ] (A) Set hostname to "bangla-os"
+[ ] (A) Customize /etc/issue with Bengali welcome
+[ ] (B) Verify with neofetch
+[ ] (B) Create temporary logo (final logo in Phase 2)
+[ ] (B) Set default wallpaper (temporary)
+[ ] (A) Snapshot: "08-branding-basic"
+
+------ Phase 1.9: Penguins-eggs Installation ------
+
+[ ] (A) Download get-eggs script from GitHub
+[ ] (A) Run get-eggs.sh to add repository
+[ ] (A) Install eggs: sudo apt install eggs
+[ ] (A) Verify: eggs --version
+[ ] (A) Read eggs documentation: sudo eggs dad --help
+        🧠 [E:PROG] — READ THE DOCS. All of them. Don't cargo-cult.
+[ ] (A) Snapshot: "09-eggs-installed"
+
+------ Phase 1.10: First ISO Build ------
+
+🧠 [E:MIX-3] HIGH-ENERGY MILESTONE
+    This is the moment of truth. The first artifact users will touch.
+    Google: is the build reproducible? Cached properly?
+    Microsoft: will the ISO boot on the widest range of hardware?
+    Debian: are all packages from trusted sources, no FrankenDebian?
+
+[x] (A) Free disk check: df -h (need 10+ GB free)
+[x] (A) Clean apt cache: sudo apt autoremove --purge && sudo apt clean
+[x] (A) Configure eggs: sudo eggs dad -c
+    Settings:
+    - basename: bangla-os
+    - version: 1.0
+    - compression: fast (zstd)
+    - installer: calamares
+    - user/pass: live/evolution
+[x] (A) Run build: sudo eggs produce --release --basename=bangla-os --verbose
+[x] (A) Verify ISO created in /home/eggs/
+[ ] (A) Check ISO size (target: <1.5 GB)  [!] current ~2.3 GB (was 3.5 GB)
+[x] (A) Generate SHA256 checksum
+        🧠 [E:GOOGLE] — Integrity is non-negotiable. Publish checksums.
+[x] (A) Copy ISO to host machine
+
+------ Phase 1.11: Testing ------
+
+🧠 [E:ALL] ALL 4 ENGINEER PERSPECTIVES
+    Google: automated test coverage, performance benchmarks
+    Microsoft: real user flows, accessibility, edge cases
+    Debian: package integrity, init sequence, no broken deps
+    Programmer: reproducibility, regression tracking
+
+[x] (A) Create new test VM "BanglaOS-Test" with 1GB RAM  (QEMU: boot-qemu-test-1gb.ps1)
+[x] (A) Boot ISO in live mode  (QEMU GUI — patched ISO)
+[ ] (A) Verify LightDM appears
+[~] (A) Login with live/evolution  (confirmed once; re-verify in current session)
+[ ] (A) Verify desktop loads correctly
+[ ] (A) Run neofetch — should show "Bangla OS 1.0 (Padma)"
+[ ] (A) Test Bengali typing (Super+Space)
+[ ] (A) Open Firefox, verify Bengali rendering
+[ ] (A) Test Calamares installer
+[ ] (A) Verify Wine works: wine --version
+[ ] (A) Check RAM usage idle (target: <500MB)
+[ ] (B) Test on real old laptop if available
+        🧠 [E:MS] — Real hardware reveals what VMs hide. Especially
+        WiFi chips, GPU drivers, sound cards.
+[~] (A) Document all bugs found  (see output/PHASE-1.11-TEST-RESULTS.md)
+[ ] (A) Fix critical bugs and rebuild
+
+------ Phase 1.12: First Public Release ------
+
+[x] (A) Final ISO build with all fixes  (slim rebuild 2026-05-21, 2.3 GB)
+[~] (A) Write release notes (Bengali + English)
+        🧠 [E:PROG] — Honest release notes. List known issues. Don't
+        oversell. Users respect honesty.
+        → output/RELEASE-NOTES-1.0.md, output/RELEASE-MANIFEST.txt
+[ ] (A) Create GitHub release
+[ ] (A) Upload ISO to GitHub releases (or SourceForge if >2GB limit)
+[ ] (A) Create torrent file (optional but recommended)
+[ ] (B) Announce in Linux Bangladesh communities
+[ ] (B) Post on r/linux, r/debian
+[ ] (B) Submit to DistroWatch (free listing)
+
+================================================================================
+PHASE 2 — POLISH & ITERATION / পরিমার্জন
+================================================================================
+
+------ Phase 2.1: Custom Branding Assets ------
+
+[ ] (A) Design Bangla OS logo (SVG)
+    - Use Bangladesh flag green (#006a4e)
+    - Bengali "বাঙলা OS" text
+    - Square format, scalable
+        🧠 [E:GOOGLE] — Logo must work at 16px AND 512px. Test both.
+        🧠 [E:MS] — Logo must look professional, not amateur clipart.
+[ ] (A) Generate logo PNGs (16, 22, 24, 32, 48, 64, 128, 256, 512)
+[ ] (A) Design wallpaper set (5-10 wallpapers)
+    - Default: Padma river theme
+    - Optional: Sundarbans, mosques, cultural motifs
+    - Resolution: 1920x1080 minimum
+[ ] (A) Create Plymouth boot splash theme
+        🧠 [E:DEBIAN] — Follow Plymouth theme conventions. Don't hack.
+[ ] (A) Customize GRUB menu with logo and Bengali text
+[ ] (A) Customize LightDM greeter (background, branding)
+[ ] (B) Design Calamares installer branding
+[ ] (B) Create system sound theme (login, logout, notifications)
+
+------ Phase 2.2: First-Run Welcome App ------
+
+🧠 [E:MIX-3] HIGH-ENERGY — FIRST IMPRESSION CRITICAL
+    Google: clean code, modular, testable
+    Microsoft: friendly UX, hand-holds new user, no jargon
+    Debian: follows XDG specs for autostart, desktop files
+
+[ ] (A) Design welcome wizard mockup
+[ ] (A) Create Python GTK3 app: bangla-welcome.py
+    Features:
+    - Bengali UI
+    - 4 main buttons (Network, Language, Software, Wine)
+    - "Don't show again" checkbox
+        🧠 [E:PROG] — Clean code. Separate UI from logic. Use GResource
+        for assets. Don't ship a 500-line spaghetti script.
+[ ] (A) Create autostart .desktop file
+[ ] (A) Add to /etc/skel/.config/autostart/
+[ ] (A) Test on fresh install
+
+------ Phase 2.3: Bangla Software Store ------
+
+🧠 [E:MIX-3] HIGH-ENERGY
+    Google: scalable design — what if 100+ apps later?
+    Microsoft: Windows-Store-like familiarity
+    Debian: respect APT/Flatpak as backends, don't reinvent
+
+[ ] (B) Design "বাঙলা স্টোর" app concept
+[ ] (B) Build simple GTK frontend for apt/flatpak
+        🧠 [E:PROG] — Wrap, don't reimplement. APT + Flatpak as backend.
+[ ] (B) Curate list of recommended software
+[ ] (B) Add categories: Internet, Office, Media, Education, Games
+[ ] (C) Include Windows software recommendations via Bottles
+
+------ Phase 2.4: Documentation ------
+
+[ ] (A) Write installation guide (Bengali) with screenshots
+[ ] (A) Write first-time setup guide
+[ ] (A) Write Wine/Windows software guide
+[ ] (A) Write troubleshooting FAQ
+[ ] (A) Write keyboard shortcuts reference
+[ ] (B) Create developer documentation (English)
+        🧠 [E:PROG] — Documentation IS the product. Code without docs
+        is half-finished. Write for someone who joins in 6 months.
+[ ] (B) Set up documentation website (MkDocs or Docusaurus)
+[ ] (C) Translate key docs to English for international reach
+
+------ Phase 2.5: Community Building ------
+
+[ ] (A) Create Telegram group "Bangla OS Community"
+[ ] (A) Create Discord server
+[ ] (A) Set up GitHub Discussions
+[ ] (B) Create YouTube channel
+[ ] (B) Record installation video (Bengali)
+[ ] (B) Record feature showcase video
+[ ] (C) Write blog posts about the project journey
+
+------ Phase 2.6: Bug Fixes & Polish ------
+
+[ ] (A) Collect feedback from Phase 1 users
+[ ] (A) Triage bugs (critical / important / nice-to-have)
+        🧠 [E:GOOGLE] — Severity ratings, repro steps, owner assignment.
+        Treat the bug tracker like a real engineering team would.
+[ ] (A) Fix critical bugs
+[ ] (A) Release v1.1 with fixes
+[ ] (B) Performance optimization
+        🧠 [E:GOOGLE] — Profile before optimizing. Measure, don't guess.
+[ ] (B) Reduce ISO size further if possible
+[ ] (C) Add more pre-installed Bengali apps
+
+================================================================================
+PHASE 3 — MIGRATION TO LIVE-BUILD / প্রোডাকশন গ্রেড
+================================================================================
+
+🧠 [E:ALL] ENTIRE PHASE IS HIGH-ENERGY
+    This is where Bangla OS graduates from hobby to engineering project.
+    All 4 perspectives needed. Don't cut corners.
+
+------ Phase 3.1: Pre-Migration ------
+
+[ ] (A) User base reaches 100+ active users
+[ ] (A) Stable feature set established
+[ ] (A) Document all customizations done in Phase 1-2
+        🧠 [E:PROG] — If it's not documented, it doesn't exist. Tribal
+        knowledge will kill the project.
+[ ] (A) Convert manual GUI changes to scripts
+[ ] (A) Create comprehensive package install/remove lists
+
+------ Phase 3.2: Live-Build Setup ------
+
+🧠 [E:DEBIAN] PRIMARY PERSPECTIVE
+    Live-build is Debian's official tool. Use it the Debian Way.
+    Don't shortcut. Don't hack. Follow upstream conventions.
+
+[ ] (A) Install live-build on dedicated build machine
+[ ] (A) Create live-build config directory structure
+[ ] (A) Migrate package lists to config/package-lists/
+[ ] (A) Convert customization scripts to chroot hooks
+[ ] (A) Move branding assets to config/includes.chroot/
+[ ] (A) Configure GRUB customization
+[ ] (A) Configure Plymouth theme inclusion
+[ ] (A) Configure Calamares branding
+
+------ Phase 3.3: Build Automation ------
+
+🧠 [E:GOOGLE] PRIMARY PERSPECTIVE
+    Automation is the Google Way. If you build it twice, automate it.
+    CI/CD, reproducible builds, artifact tracking, build logs.
+
+[ ] (A) Write build.sh wrapper script
+[ ] (A) Write clean.sh for fresh builds
+[ ] (A) Write test.sh for automated VM testing
+[ ] (B) Set up GitHub Actions for CI/CD
+        🧠 [E:GOOGLE] — Every git tag → automatic ISO build. No manual
+        ISO creation in production. Humans make mistakes.
+[ ] (B) Configure automatic ISO builds on git tag
+[ ] (B) Set up artifact storage (GitHub Releases or own CDN)
+[ ] (B) Implement reproducible builds
+        🧠 [E:DEBIAN] — Reproducible builds are a Debian gold standard.
+        Same input → same SHA256 output. Always.
+
+------ Phase 3.4: Multiple Editions ------
+
+[ ] (B) "Bangla OS Lite" — minimal, ~800MB
+[ ] (B) "Bangla OS Standard" — current, ~1.5GB
+[ ] (B) "Bangla OS Full" — with LibreOffice, GIMP, more
+[ ] (C) "Bangla OS Edu" — for schools, with educational software
+[ ] (C) "Bangla OS Server" — minimal server edition
+
+------ Phase 3.5: Custom Installer ------
+
+[ ] (B) Customize Calamares branding fully
+[ ] (B) Add Bengali language as default option
+[ ] (B) Add post-install hooks (welcome wizard auto-run)
+[ ] (C) Consider building custom installer in long term
+        🧠 [E:MIX-3] — Big decision. Build vs use Calamares?
+        Google: maintenance burden, code quality
+        Microsoft: UX advantages of custom installer
+        Debian: don't fork tools you can't maintain
+        DECISION: probably stick with Calamares + heavy branding.
+
+================================================================================
+PHASE 4 — PRODUCTION & GROWTH / প্রতিষ্ঠা ও বৃদ্ধি
+================================================================================
+
+------ Phase 4.1: Infrastructure ------
+
+[ ] (B) Set up official website (banglaos.org)
+[ ] (B) Set up mirror servers (or use CDN)
+[ ] (B) Set up download statistics tracking
+[ ] (C) Establish own package repository
+        🧠 [E:ALL] HIGH-ENERGY — running a repo is serious responsibility
+        Google: scale, uptime, mirroring
+        Microsoft: signed packages, supply chain security
+        Debian: archive management, repo signing, GPG keys
+        Programmer: automation, monitoring, alerting
+[ ] (C) Set up build farm for multiple architectures
+
+------ Phase 4.2: Quality Assurance ------
+
+[ ] (A) Establish QA process for releases
+        🧠 [E:GOOGLE] — No release without QA sign-off. Checklist culture.
+[ ] (A) Create automated testing suite
+[ ] (B) Beta testing program with community
+[ ] (B) Hardware compatibility database
+[ ] (B) Security update pipeline
+        🧠 [E:DEBIAN] — Security is sacred. Have a CVE response plan.
+
+------ Phase 4.3: Localization Expansion ------
+
+[ ] (B) Improve Bengali translations across all apps
+[ ] (B) Submit translations upstream (Debian, XFCE, etc.)
+        🧠 [E:DEBIAN] — Be a good upstream citizen. Contribute back.
+[ ] (C) Add support for other Bangladeshi languages
+[ ] (C) Add support for West Bengal regional variants
+
+------ Phase 4.4: Partnerships & Outreach ------
+
+[ ] (B) Reach out to Bangladeshi universities
+[ ] (B) Contact BCC (Bangladesh Computer Council)
+[ ] (B) Propose to schools/colleges as Windows alternative
+[ ] (C) Partner with PC refurbishers for old hardware
+[ ] (C) Government adoption proposal
+
+------ Phase 4.5: Sustainability ------
+
+[ ] (B) Set up donation/sponsorship channels
+[ ] (B) Apply for open-source grants
+[ ] (B) Build contributor community (10+ active devs)
+[ ] (B) Create code of conduct and contribution guidelines
+[ ] (C) Establish foundation/non-profit if scale demands
+
+================================================================================
+ONGOING TASKS / চলমান কাজ
+================================================================================
+
+[ ] Monitor security updates from Debian
+    🧠 [E:DEBIAN] — Security is not optional. Track Debian Security
+    Advisories religiously.
+[ ] Review user feedback
+[ ] Triage GitHub issues
+    🧠 [E:GOOGLE] — Use labels, milestones, owners. Treat the issue
+    tracker like an engineering team would.
+[ ] Release minor updates (1.1, 1.2, ...)
+[ ] Major release (2.0, 3.0, ...)
+[ ] Documentation updates
+[ ] Community engagement
+
+================================================================================
+ENGINEER MINDSET CHEAT SHEET / ইঞ্জিনিয়ার সারসংক্ষেপ
+================================================================================
+
+BEFORE EVERY TASK, ASK YOURSELF:
+
+🟢 GOOGLE CORE ENGINEER says:
+   - Can this be measured? Measure it.
+   - Can this be automated? Automate it.
+   - Will this scale? If not, redesign.
+   - Where are the failure modes?
+   - Is there a test for this?
+
+🔵 MICROSOFT OS ENGINEER says:
+   - Would my mother understand this UI?
+   - Does it work with the user's existing knowledge?
+   - Is the error message helpful, not cryptic?
+   - Have I tested on real, varied hardware?
+   - Is accessibility considered?
+
+🟡 DEBIAN CORE ENGINEER says:
+   - Is this Debian Policy compliant?
+   - Is this in the right FHS location?
+   - Does this respect the package manager?
+   - Is the license compatible?
+   - Am I being a good upstream citizen?
+
+🔴 SENIOR PROGRAMMER says:
+   - Is this code readable to others?
+   - Is it documented?
+   - Is it tested?
+   - Is it modular and maintainable?
+   - Will future-me curse current-me?
+
+⚡ FOR HIGH-ENERGY TASKS [E:MIX-3] OR [E:ALL]:
+   Run through ALL relevant perspectives BEFORE coding.
+   Document the decision in a commit message or doc.
+   This is what separates pros from hobbyists.
+
+================================================================================
+TOOLS & RESOURCES / টুল ও রিসোর্স
+================================================================================
+
+Primary Tools:
+  - Debian 12 (Bookworm) base
+  - Penguins-eggs: github.com/pieroproietti/penguins-eggs
+  - Live-build: salsa.debian.org/live-team/live-build
+  - Calamares installer: calamares.io
+  - Cursor IDE: cursor.sh (for code generation)
+  - Claude Code: anthropic.com (for scripts/configs)
+
+Inspiration:
+  - Linux Mint: linuxmint.com
+  - MX Linux: mxlinux.org
+  - KoruX: github.com/topics/custom-linux
+  - antiX: antixlinux.com
+
+Bengali Resources:
+  - OpenBangla Keyboard: github.com/OpenBangla/OpenBangla-Keyboard
+  - Bengali fonts: github.com/potravi/bengali-fonts
+  - Avro Keyboard: omicronlab.com
+
+Engineering Reference Material:
+  - Debian Policy Manual: debian.org/doc/debian-policy/
+  - Google SRE Book: sre.google/books/
+  - Microsoft UX Guidelines: learn.microsoft.com/windows/apps/design/
+  - The Pragmatic Programmer (book)
+  - Linux From Scratch: linuxfromscratch.org (for deep understanding)
+
+================================================================================
+SUCCESS METRICS / সাফল্যের মাপকাঠি
+================================================================================
+
+Phase 1 Success:
+  ✓ Working ISO under 1.5 GB
+  ✓ RAM usage under 500 MB idle
+  ✓ Bengali typing works
+  ✓ Wine works
+  ✓ At least 10 testers can install successfully
+
+Phase 2 Success:
+  ✓ 100+ downloads
+  ✓ Active community (Telegram/Discord)
+  ✓ Documentation complete
+  ✓ Less than 10 open critical bugs
+
+Phase 3 Success:
+  ✓ Reproducible builds via CI/CD
+  ✓ Multiple editions available
+  ✓ 1000+ downloads
+  ✓ External contributors
+
+Phase 4 Success:
+  ✓ 10,000+ users
+  ✓ Recognized in Bangladesh tech community
+  ✓ Sustainable funding/support
+  ✓ Listed on DistroWatch with active page
+
+================================================================================
+NOTES / নোট
+================================================================================
+
+- Always snapshot VirtualBox before major changes
+- Document every manual change for later script conversion
+- Test on real old hardware, not just VMs
+- Keep ISO small — every MB matters for slow internet users in Bangladesh
+- Bengali UX is the differentiator — don't compromise on this
+- Open source forever — never close any part of the code
+- Listen to users more than developers
+- Ship early, ship often
+
+🔥 GOLDEN RULE 🔥
+   You are NOT a regular worker on this project.
+   You are a Google + Microsoft + Debian engineer combined.
+   Act accordingly. Think accordingly. Ship accordingly.
+
+================================================================================
+END OF TODO LIST
+================================================================================
