@@ -16,11 +16,12 @@ gh release upload $Tag $Checksums
 if (Test-Path $Patched) {
     $mb = [math]::Round((Get-Item $Patched).Length / 1MB)
     if ($mb -gt 1900) {
-        Write-Warning "ISO is ${mb} MB — GitHub limit is 2048 MB. Skipping ISO upload."
+        Write-Warning "ISO is ${mb} MB - GitHub limit is 2048 MB. Skipping ISO upload."
         Write-Host "Host ISO locally or use SourceForge; checksums are on the release."
     } else {
         gh release upload $Tag $Patched
     }
 }
 
-Write-Host "Release: $(gh release view $Tag --json url -q .url)"
+$url = gh release view $Tag --json url -q ".url"
+Write-Host "Release: $url"

@@ -84,6 +84,7 @@ PHASE 0 — PREPARATION / প্রস্তুতি
     URL: https://www.debian.org/CD/netinst/
 [ ] (A) GitHub account ready
 [ ] (A) Create GitHub repo "bangla-os" (public)
+        → https://github.com/aicmsbd/bangla-os
         🧠 [E:PROG] — Set up proper repo structure, branch protection,
         issue templates, PR templates from day one. Don't be sloppy.
 [x] (B) Choose license — recommend GPL v3
@@ -306,12 +307,12 @@ PHASE 1 — FIRST RELEASE (Penguins-eggs) / প্রথম রিলিজ
 ------ Phase 1.12: First Public Release ------
 
 [x] (A) Final ISO build with all fixes  (slim rebuild 2026-05-21, 2.3 GB)
-[~] (A) Write release notes (Bengali + English)
-        🧠 [E:PROG] — Honest release notes. List known issues. Don't
-        oversell. Users respect honesty.
-        → output/RELEASE-NOTES-1.0.md, output/RELEASE-MANIFEST.txt
-[ ] (A) Create GitHub release
-[ ] (A) Upload ISO to GitHub releases (or SourceForge if >2GB limit)
+[x] (A) Write release notes (Bengali + English)
+        → docs/release/RELEASE-NOTES-1.0.md, docs/release/SHA256SUMS
+[x] (A) Create GitHub release
+        → https://github.com/aicmsbd/bangla-os/releases/tag/v1.0.0
+[~] (A) Upload ISO to GitHub releases (or SourceForge if >2GB limit)
+        [!] ISO 2304 MB exceeds GitHub 2GB limit; SHA256SUMS on release. Host ISO locally or use SourceForge.
 [ ] (A) Create torrent file (optional but recommended)
 [ ] (B) Announce in Linux Bangladesh communities
 [ ] (B) Post on r/linux, r/debian
